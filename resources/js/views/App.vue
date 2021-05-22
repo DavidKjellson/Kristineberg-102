@@ -1,18 +1,16 @@
 <template>
   <div>
-    {{message}}
+    <ExampleComponent />
   </div>
 </template>
+
 <script>
 const default_layout = "default";
 
-
+import ExampleComponent from "../components/ExampleComponent.vue";
 export default {
-  computed: {},
-  data() {
-      return {
-          message:'Hello World'
-      }
-  }
+  components: {
+    ExampleComponent,
+  },
 };
 </script>
