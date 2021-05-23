@@ -18,7 +18,7 @@ Vue.use(VueScheduler, {
     minDate: null,
     maxDate: null,
     labels: {
-        today: date.getDate() + ' ' + date.toLocaleString('sv', { month: 'long' }),
+        today: date.getDate() + ' ' + date.toLocaleString('sv-SV', { month: 'long' }),
         back: '←',
         next: '→',
         month: 'Månad',
