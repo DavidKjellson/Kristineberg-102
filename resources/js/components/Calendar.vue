@@ -1,5 +1,5 @@
 <template>
   <div>
-    <vue-scheduler />
+    <vue-scheduler :disable-dialog="true" />
   </div>
 </template>
