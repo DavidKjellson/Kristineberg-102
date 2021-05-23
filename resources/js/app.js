@@ -9,7 +9,22 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 import App from './views/App.vue'
 import BootstrapVue from 'bootstrap-vue';
+import VueScheduler from 'v-calendar-scheduler';
+import 'v-calendar-scheduler/lib/main.css';
 Vue.use(BootstrapVue);
+Vue.use(VueScheduler, {
+    locale: 'sv',
+    minDate: null,
+    maxDate: null,
+    labels: {
+        today: 'I dag',
+        back: '←',
+        next: '→',
+        month: 'Månad',
+        week: 'Vecka',
+        day: 'Dag'
+    }
+});
 
 
 /**
