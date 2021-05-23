@@ -3,6 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+let date = new Date();
 
 require('./bootstrap');
 
@@ -17,13 +18,15 @@ Vue.use(VueScheduler, {
     minDate: null,
     maxDate: null,
     labels: {
-        today: 'I dag',
+        today: date.getDate() + ' ' + date.toLocaleString('sv', { month: 'long' }),
         back: '←',
         next: '→',
         month: 'Månad',
         week: 'Vecka',
-        day: 'Dag'
-    }
+        day: 'Dag',
+        all_day: 'Heldag'
+    },
+    availableViews: [],
 });
 
 
