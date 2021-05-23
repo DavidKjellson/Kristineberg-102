@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 import App from './views/App.vue'
+import BootstrapVue from 'bootstrap-vue';
+Vue.use(BootstrapVue);
+
 
 /**
  * The following block of code may be used to automatically register your
