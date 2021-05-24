@@ -17,11 +17,8 @@ export default {
 
 
 <style lang="scss">
-@import "resources/sass/_variables.scss";
-$v-cal-body-bg: salmon;
 .calendar {
   margin: 0 auto;
   width: 75%;
-  background-color: $v-cal-body-bg; /* < ABSOLUTE BULL! */
 }
 </style>

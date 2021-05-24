@@ -11,8 +11,10 @@ window.Vue = require('vue').default;
 import App from './views/App.vue'
 import BootstrapVue from 'bootstrap-vue';
 import VueScheduler from 'v-calendar-scheduler';
-import 'v-calendar-scheduler/lib/main.css';
+// import FontAwesome from 'font-awesome';
+import Vue from 'vue';
 Vue.use(BootstrapVue);
+// Vue.use(FontAwesome);
 Vue.use(VueScheduler, {
     locale: 'sv',
     minDate: null,

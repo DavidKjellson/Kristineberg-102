@@ -11,15 +11,7 @@
 // Font Awesome
 @import "~font-awesome/scss/font-awesome.scss";
 
-
-/* ******* NOT WORKING! v ******* */
 // Vue Calendar
-//  Import the default variables
 @import "~v-calendar-scheduler/scss/variables";
-
-//  Set your variables
-$v-cal-body-bg: salmon;
-
-//  Import the rest
+$v-cal-body-bg: transparent;
 @import "~v-calendar-scheduler/scss/main";
-/* ******* NOT WORKING! ^ ******* */

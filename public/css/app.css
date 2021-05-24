@@ -1,7 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
-/* ******* DOESN'T WORK! v ******* */
-/* ******* DOESN'T WORK! ^ ******* */
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -15614,7 +15612,6 @@ input[type=color].form-control:disabled {
   clip: auto;
 }
 
-/* ******* NOT WORKING! v ******* */
 .v-cal-dialog {
   position: fixed;
   left: 0;
@@ -15801,7 +15798,7 @@ input[type=color].form-control:disabled {
   font-family: inherit;
   font-size: inherit;
   padding: 20px;
-  background-color: salmon;
+  background-color: transparent;
   color: #4D4F5C;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   box-sizing: border-box;
@@ -16122,5 +16119,3 @@ input[type=color].form-control:disabled {
 .v-cal-content.v-cal-content--day .v-cal-weekdays .v-cal-weekday-item {
   flex-grow: 1;
 }
-
-/* ******* NOT WORKING! ^ ******* */
