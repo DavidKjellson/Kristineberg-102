@@ -14,13 +14,7 @@ import VCalendar from 'v-calendar';
 // import FontAwesome from 'font-awesome';
 import Vue from 'vue';
 Vue.use(BootstrapVue);
-Vue.use(VCalendar, {
-    screens: {
-    tablet: '576px',
-    laptop: '992px',
-    desktop: '1200px',
-  },
-});
+Vue.use(VCalendar);
 
 /**
  * The following block of code may be used to automatically register your

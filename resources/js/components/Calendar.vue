@@ -1,15 +1,14 @@
 <template>
   <div class="calendar">
-    <!-- <vue-scheduler :disable-dialog="true" @day-clicked="dayClicked" /> -->
-    <!-- <v-date-picker v-model="range" is-range>
-      <v-calendar is-expanded show-weeknumbers />
-    </v-date-picker> -->
     <v-date-picker
       is-expanded
       v-model="range"
       is-range
       color="green"
       @dayclick="dayClicked"
+      show-weeknumbers
+      :attributes="attributes"
+      :available-dates="{ start: new Date(), end: null }"
     />
   </div>
 </template>
@@ -17,6 +16,16 @@
 <script>
 export default {
   data: () => ({
+    attributes: [
+      {
+        key: "today",
+        highlight: {
+          color: "green",
+          fillMode: "light",
+        },
+        dates: new Date(),
+      },
+    ],
     range: {
       start: new Date(),
       end: new Date(),
@@ -24,7 +33,8 @@ export default {
   }),
   methods: {
     dayClicked() {
-      console.log("lol");
+      console.log(this.range.start);
+      console.log(this.range.end);
     },
   },
 };
