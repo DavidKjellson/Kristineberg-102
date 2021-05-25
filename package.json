@@ -28,6 +28,10 @@
     "dependencies": {
         "bootstrap-vue": "^2.21.2",
         "font-awesome": "^4.7.0",
-        "v-calendar-scheduler": "^0.7.4"
+        "v-calendar": "^2.3.0",
+        "v-calendar-scheduler": "^0.7.4",
+        "vue-airbnb-calendar": "^0.15.0",
+        "vue-airbnb-calendar-plugin-selection": "^0.15.0",
+        "vue-hotel-datepicker": "^4.4.0"
     }
 }

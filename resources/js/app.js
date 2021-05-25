@@ -10,25 +10,16 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 import App from './views/App.vue'
 import BootstrapVue from 'bootstrap-vue';
-import VueScheduler from 'v-calendar-scheduler';
+import VCalendar from 'v-calendar';
 // import FontAwesome from 'font-awesome';
 import Vue from 'vue';
 Vue.use(BootstrapVue);
-// Vue.use(FontAwesome);
-Vue.use(VueScheduler, {
-    locale: 'sv',
-    minDate: null,
-    maxDate: null,
-    labels: {
-        today: date.getDate() + ' ' + date.toLocaleString('sv-SV', { month: 'long' }),
-        back: '←',
-        next: '→',
-        month: 'Månad',
-        week: 'Vecka',
-        day: 'Dag',
-        all_day: 'Heldag'
-    },
-    availableViews: [],
+Vue.use(VCalendar, {
+    screens: {
+    tablet: '576px',
+    laptop: '992px',
+    desktop: '1200px',
+  },
 });
 
 /**
