@@ -13,7 +13,7 @@
       />
       <Button :disabled="range.end === null" :click="bookButton" />
     </div>
-    <div v-else class="d-flex justify-content-around bookingdiv mt-4">
+    <!-- <div v-else class="d-flex justify-content-around bookingdiv mt-4">
       <div class="relative flex-grow">
         <input
           class="flex-grow pl-8 pr-2 py-1 bg-gray-100 border rounded w-full"
@@ -29,7 +29,7 @@
           readonly
         />
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

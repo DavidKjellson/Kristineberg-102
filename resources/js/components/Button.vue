@@ -32,7 +32,7 @@ export default {
 <style lang="scss">
 .buttondiv {
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
 }
 .button {
   font-size: 20px;
