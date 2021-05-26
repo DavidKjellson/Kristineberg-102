@@ -10,11 +10,16 @@
       :attributes="attributes"
       :available-dates="{ start: new Date(), end: null }"
     />
+    <Button :disabled="range.end === null" />
   </div>
 </template>
 
 <script>
+import Button from "../components/Button.vue";
 export default {
+  components: {
+    Button,
+  },
   data: () => ({
     attributes: [
       {
@@ -28,7 +33,7 @@ export default {
     ],
     range: {
       start: new Date(),
-      end: new Date(),
+      end: null,
     },
   }),
   methods: {
@@ -47,3 +52,7 @@ export default {
   width: 75%;
 }
 </style>
+
+    <!-- <Button />
+import Button from "../components/Button.vue";
+    // Button,
