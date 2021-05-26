@@ -15,6 +15,7 @@ import VCalendar from 'v-calendar';
 import Vue from 'vue';
 Vue.use(BootstrapVue);
 Vue.use(VCalendar);
+Vue.use(require('vue-moment'));
 
 /**
  * The following block of code may be used to automatically register your

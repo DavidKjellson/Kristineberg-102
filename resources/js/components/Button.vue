@@ -1,6 +1,12 @@
 <template>
   <div class="text-center mt-4 buttondiv">
-    <b-button :disabled="disabled" pill block variant="primary" class="button"
+    <b-button
+      :disabled="disabled"
+      pill
+      block
+      variant="primary"
+      class="button"
+      @click="click"
       >Boka</b-button
     >
   </div>
@@ -9,6 +15,12 @@
 <script>
 export default {
   props: {
+    click: {
+      type: Function,
+      default: () => {
+        return false;
+      },
+    },
     disabled: {
       type: Boolean,
     },

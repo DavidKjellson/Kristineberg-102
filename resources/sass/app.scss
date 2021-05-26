@@ -9,4 +9,7 @@
 @import '~bootstrap-vue/src/index.scss';
 
 // Font Awesome
-@import "~font-awesome/scss/font-awesome.scss";
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
