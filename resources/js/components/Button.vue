@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <span>
     <b-button
       :disabled="disabled"
       :pill="pill"
@@ -10,7 +10,7 @@
     >
       <slot
     /></b-button>
-  </div>
+  </span>
 </template>
 
 <script>
