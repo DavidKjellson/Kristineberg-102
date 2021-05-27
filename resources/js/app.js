@@ -11,7 +11,6 @@ window.Vue = require('vue').default;
 import App from './views/App.vue'
 import BootstrapVue from 'bootstrap-vue';
 import VCalendar from 'v-calendar';
-// import FontAwesome from 'font-awesome';
 import Vue from 'vue';
 Vue.use(BootstrapVue);
 Vue.use(VCalendar);

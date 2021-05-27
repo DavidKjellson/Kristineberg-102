@@ -7,8 +7,9 @@
       variant="primary"
       class="button"
       @click="click"
-      >Boka</b-button
     >
+      <slot
+    /></b-button>
   </div>
 </template>
 

@@ -12,22 +12,20 @@
         :attributes="attributes"
         :available-dates="{ start: new Date(), end: null }"
       />
-      <Button :disabled="range.end === null" :click="bookButton" />
+      <Button :disabled="range.end === null" :click="bookButton">Boka</Button>
     </div>
-    <form v-else>
-      <Input
-        :value="
-          range.start.toLocaleDateString() +
-          ' ➜ ' +
-          range.end.toLocaleDateString()
-        "
-        :readonly="!readonly"
-        :formControl="formControl"
-      >
-        Datum
-      </Input>
-      <Input>Namn</Input>
-    </form>
+    <div v-else>
+      <form>
+        <Input
+          :value="bookedDates"
+          :readonly="readonly"
+          :formControl="plaintext"
+        >
+          Datum
+        </Input>
+        <Input>Namn</Input>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -35,20 +33,15 @@
 const default_layout = "default";
 
 import Button from "../components/Button.vue";
-// import Calendar from "../components/Calendar.vue";
 import Header from "../components/Header.vue";
 import Input from "../components/Input.vue";
 export default {
   components: {
     Button,
-    // Calendar,
     Header,
     Input,
   },
   data: () => ({
-    readonly: false,
-    formControl: "form-control-plaintext",
-    transition: false,
     attributes: [
       {
         key: "today",
@@ -59,10 +52,13 @@ export default {
         dates: new Date(),
       },
     ],
+    plaintext: "form-control-plaintext",
     range: {
       start: new Date(),
       end: null,
     },
+    readonly: true,
+    transition: false,
   }),
   methods: {
     bookButton() {
@@ -71,6 +67,25 @@ export default {
     dayClicked() {
       console.log(this.range.start);
       console.log(this.range.end);
+    },
+  },
+  computed: {
+    bookedDates() {
+      let start = this.range.start;
+      let end = this.range.end;
+      return (
+        start.getDate() +
+        " " +
+        start.toLocaleString("sv-SV", { month: "long" }) +
+        " " +
+        start.getFullYear() +
+        " ➜ " +
+        end.getDate() +
+        " " +
+        end.toLocaleString("sv-SV", { month: "long" }) +
+        " " +
+        end.getFullYear()
+      );
     },
   },
 };

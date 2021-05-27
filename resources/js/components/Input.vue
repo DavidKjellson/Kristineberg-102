@@ -30,11 +30,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-// input {
-//   text-align: center;
-//   // font-size: 25px;
-//   // width: 50%;
-// }
-</style>
