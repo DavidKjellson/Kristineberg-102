@@ -1,9 +1,9 @@
 <template>
-  <div class="text-center mt-4 buttondiv">
+  <div>
     <b-button
       :disabled="disabled"
-      pill
-      block
+      :pill="pill"
+      :block="block"
       variant="primary"
       class="button"
       @click="click"
@@ -16,6 +16,10 @@
 <script>
 export default {
   props: {
+    block: {
+      type: Boolean,
+      default: false,
+    },
     click: {
       type: Function,
       default: () => {
@@ -25,16 +29,20 @@ export default {
     disabled: {
       type: Boolean,
     },
+    pill: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
 
 
 <style lang="scss">
-.buttondiv {
-  margin: 0 auto;
-  width: 50%;
-}
+// .buttondiv {
+//   margin: 0 auto;
+//   width: 50%;
+// }
 .button {
   font-size: 20px;
   border: none;

@@ -12,7 +12,15 @@
         :attributes="attributes"
         :available-dates="{ start: new Date(), end: null }"
       />
-      <Button :disabled="range.end === null" :click="bookButton">Boka</Button>
+      <div class="text-center mt-4 buttondiv">
+        <Button
+          :disabled="range.end === null"
+          :click="bookButton"
+          :pill="true"
+          :block="true"
+          >Boka</Button
+        >
+      </div>
     </div>
     <div v-else>
       <form>
@@ -25,6 +33,16 @@
         </Input>
         <Input>Namn</Input>
       </form>
+
+      <ButtonFlex>
+        <!-- <a class="btn btn-lg btn-success" href="#"
+          >Link<span class="glyphicon glyphicon-align-justify"></span
+        ></a> -->
+        <Button>Ångra</Button>
+        <Button>Boka</Button>
+        <!-- <button class="btn btn-lg btn-success" href="#">Link</button>
+        <button class="btn btn-lg btn-success" href="#">Link</button> -->
+      </ButtonFlex>
     </div>
   </div>
 </template>
@@ -33,11 +51,13 @@
 const default_layout = "default";
 
 import Button from "../components/Button.vue";
+import ButtonFlex from "../components/ButtonFlex.vue";
 import Header from "../components/Header.vue";
 import Input from "../components/Input.vue";
 export default {
   components: {
     Button,
+    ButtonFlex,
     Header,
     Input,
   },
@@ -92,6 +112,9 @@ export default {
 </script>
 
 <style lang="scss">
+.container {
+  text-align: center;
+}
 .calendar {
   margin: 0 auto;
   width: 75%;
@@ -100,14 +123,8 @@ form {
   margin: 0 auto;
   width: 40%;
 }
-
-.datearrow {
-  // margin-top: 1.5%;
-}
-
-.bookingdiv {
-  // margin: 0 auto;
-  // font-size: 25px;
-  // width: 50%;
+.buttondiv {
+  margin: 0 auto;
+  width: 60%;
 }
 </style>
