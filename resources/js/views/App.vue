@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="calendar" v-if="!transition">
+    <div v-if="!transition" class="calendar">
       <v-date-picker
         is-expanded
         v-model="range"
@@ -14,11 +14,20 @@
       />
       <Button :disabled="range.end === null" :click="bookButton" />
     </div>
-    <div v-else class="d-flex justify-content-around bookingdiv mt-4">
-      <Input :value="range.start.toLocaleDateString()" />
-      <i class="fas fa-arrow-right"></i>
-      <Input :value="range.end.toLocaleDateString()" />
-    </div>
+    <form v-else>
+      <DateInput
+        :value="
+          range.start.toLocaleDateString() +
+          ' ➜ ' +
+          range.end.toLocaleDateString()
+        "
+        :readonly="!readonly"
+        :formControl="formControl"
+      >
+        Datum
+      </DateInput>
+      <DateInput>Namn</DateInput>
+    </form>
   </div>
 </template>
 
@@ -28,15 +37,17 @@ const default_layout = "default";
 import Button from "../components/Button.vue";
 // import Calendar from "../components/Calendar.vue";
 import Header from "../components/Header.vue";
-import Input from "../components/Input.vue";
+import DateInput from "../components/DateInput.vue";
 export default {
   components: {
     Button,
     // Calendar,
     Header,
-    Input,
+    DateInput,
   },
   data: () => ({
+    readonly: false,
+    formControl: "form-control-plaintext",
     transition: false,
     attributes: [
       {
@@ -70,10 +81,18 @@ export default {
   margin: 0 auto;
   width: 75%;
 }
+form {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.datearrow {
+  // margin-top: 1.5%;
+}
 
 .bookingdiv {
-  margin: 0 auto;
-  font-size: 25px;
-  width: 50%;
+  // margin: 0 auto;
+  // font-size: 25px;
+  // width: 50%;
 }
 </style>
