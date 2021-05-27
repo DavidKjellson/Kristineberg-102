@@ -15,7 +15,7 @@
       <Button :disabled="range.end === null" :click="bookButton" />
     </div>
     <form v-else>
-      <DateInput
+      <Input
         :value="
           range.start.toLocaleDateString() +
           ' ➜ ' +
@@ -25,8 +25,8 @@
         :formControl="formControl"
       >
         Datum
-      </DateInput>
-      <DateInput>Namn</DateInput>
+      </Input>
+      <Input>Namn</Input>
     </form>
   </div>
 </template>
@@ -37,13 +37,13 @@ const default_layout = "default";
 import Button from "../components/Button.vue";
 // import Calendar from "../components/Calendar.vue";
 import Header from "../components/Header.vue";
-import DateInput from "../components/DateInput.vue";
+import Input from "../components/Input.vue";
 export default {
   components: {
     Button,
     // Calendar,
     Header,
-    DateInput,
+    Input,
   },
   data: () => ({
     readonly: false,
