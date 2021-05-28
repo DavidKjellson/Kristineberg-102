@@ -6,6 +6,7 @@
       :block="block"
       variant="primary"
       class="button"
+      :class="buttonFlex"
       @click="click"
     >
       <slot
@@ -19,6 +20,9 @@ export default {
     block: {
       type: Boolean,
       default: false,
+    },
+    buttonFlex: {
+      type: String,
     },
     click: {
       type: Function,
@@ -57,5 +61,8 @@ export default {
     background-color: gray !important;
     pointer-events: none;
   }
+}
+.button-flex {
+  width: 150px;
 }
 </style>

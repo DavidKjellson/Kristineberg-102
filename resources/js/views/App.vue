@@ -33,15 +33,9 @@
         </Input>
         <Input>Namn</Input>
       </form>
-
       <ButtonFlex>
-        <!-- <a class="btn btn-lg btn-success" href="#"
-          >Link<span class="glyphicon glyphicon-align-justify"></span
-        ></a> -->
-        <Button>Ångra</Button>
-        <Button>Boka</Button>
-        <!-- <button class="btn btn-lg btn-success" href="#">Link</button>
-        <button class="btn btn-lg btn-success" href="#">Link</button> -->
+        <Button :buttonFlex="'button-flex'">Ångra</Button>
+        <Button :buttonFlex="'button-flex'">Boka</Button>
       </ButtonFlex>
     </div>
   </div>
