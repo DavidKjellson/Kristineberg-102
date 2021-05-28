@@ -65,4 +65,12 @@ export default {
 .button-flex {
   width: 150px;
 }
+.go-back {
+  background-color: transparent !important;
+  color: black;
+  border: 0.1px solid;
+  &:hover {
+    color: black;
+  }
+}
 </style>

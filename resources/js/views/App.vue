@@ -34,7 +34,9 @@
         <Input>Namn</Input>
       </form>
       <ButtonFlex>
-        <Button :buttonFlex="'button-flex'">Ångra</Button>
+        <Button :buttonFlex="'button-flex go-back'" :click="bookButton"
+          >Ångra</Button
+        >
         <Button :buttonFlex="'button-flex'">Boka</Button>
       </ButtonFlex>
     </div>
