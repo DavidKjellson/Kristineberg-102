@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Bookings extends Model
 {
     use HasFactory;
+    protected $table = 'bookings';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'start',
+        'end',
+        'name'
+    ];
 }
