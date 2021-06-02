@@ -31,7 +31,6 @@
           Datum
         </Input>
         <Input v-model="newDate.name">Namn</Input>
-        <!-- <input type="text" v-model="newDate.name" /> -->
       </form>
       <ButtonFlex>
         <Button :buttonFlex="'button-flex go-back'" :click="bookButton"

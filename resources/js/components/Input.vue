@@ -9,6 +9,7 @@
         :value="value"
         :readonly="readonly"
         :class="formControl"
+        v-on:input="$emit('input', $event.target.value)"
       />
     </div>
   </div>
