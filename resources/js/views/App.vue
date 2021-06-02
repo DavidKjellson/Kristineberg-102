@@ -36,7 +36,12 @@
         <Button :buttonFlex="'button-flex go-back'" :click="bookButton"
           >Ångra</Button
         >
-        <Button :buttonFlex="'button-flex'" :click="bookDate">Boka</Button>
+        <Button
+          :buttonFlex="'button-flex'"
+          :click="bookDate"
+          :disabled="newDate.name === ''"
+          >Boka</Button
+        >
       </ButtonFlex>
     </div>
   </div>
