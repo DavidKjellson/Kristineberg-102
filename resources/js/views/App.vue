@@ -108,6 +108,7 @@ export default {
               end: newDate.end,
               name: "",
             };
+            _this.transition = !_this.transition;
             _this.getBookings();
           })
           .catch((error) => {
@@ -158,7 +159,7 @@ export default {
 //   height: 100%;
 // }
 // .bg {
-//   background-image: url("~@/images/3540209647697935994.jpg");
+//   background-image: url("/img/3540209647697935994.jpg");
 //   height: 100%;
 //   background-position: center;
 //   background-repeat: no-repeat;
