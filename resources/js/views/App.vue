@@ -149,6 +149,17 @@ export default {
 </script>
 
 <style lang="scss">
+// body,
+// html {
+//   height: 100%;
+// }
+// .bg {
+//   background-image: url("~@/images/3540209647697935994.jpg");
+//   height: 100%;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+// }
 .container {
   text-align: center;
 }
