@@ -1,6 +1,9 @@
 <template>
   <div>
     <Header />
+    <!-- <div v-for="(date, index) in dates" :key="index">
+      <h4>{{ date.name }}</h4>
+    </div> -->
     <div v-if="!transition" class="calendar">
       <v-date-picker
         is-expanded
@@ -9,7 +12,12 @@
         color="green"
         show-weeknumbers
         :attributes="attributes"
-        :available-dates="{ start: new Date(), end: null }"
+        :available-dates="[
+          {
+            start: new Date(),
+            end: null,
+          },
+        ]"
       />
       <div class="text-center mt-4 buttondiv">
         <Button
@@ -71,10 +79,21 @@ export default {
         },
         dates: new Date(),
       },
+      // {
+      //   highlight: {
+      //     color: "red",
+      //     fillMode: "light",
+      //   },
+      //   dates: { start: new Date(2021, 5, 12), end: new Date(2021, 5, 14) },
+      //   popover: {
+      //     label: "",
+      //     visibility: "hover",
+      //   },
+      // },
     ],
     dates: [],
     hasError: true,
-    newDate: { start: "", end: "", name: "" },
+    newDate: { start: new Date(), end: new Date(), name: "" },
     plaintext: "form-control-plaintext",
     range: {
       start: new Date(),
@@ -154,17 +173,6 @@ export default {
 </script>
 
 <style lang="scss">
-// body,
-// html {
-//   height: 100%;
-// }
-// .bg {
-//   background-image: url("/img/3540209647697935994.jpg");
-//   height: 100%;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-// }
 .container {
   text-align: center;
 }
