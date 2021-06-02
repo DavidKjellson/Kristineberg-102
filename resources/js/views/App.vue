@@ -88,30 +88,28 @@ export default {
       let _this = this;
       newDate.start = this.range.start;
       newDate.end = this.range.end;
-      // if (
-      //   newDate["start"] === "" ||
-      //   newDate["end"] === "" ||
-      //   newDate["name"] === ""
-      // ) {
-      //   this.hasError = false;
-      //   console.log("Döden");
-      //   console.log(newDate.name);
-      // } else {
-      this.hasError = true;
-      axios
-        .post("/api/bookDate", newDate)
-        .then(function (response) {
-          _this.newDate = {
-            start: newDate.start,
-            end: newDate.end,
-            name: "",
-          };
-          _this.getBookings();
-        })
-        .catch((error) => {
-          console.log("Insert: " + error);
-        });
-      // }
+      if (
+        newDate["start"] === "" ||
+        newDate["end"] === "" ||
+        newDate["name"] === ""
+      ) {
+        this.hasError = false;
+      } else {
+        this.hasError = true;
+        axios
+          .post("/api/bookDate", newDate)
+          .then(function (response) {
+            _this.newDate = {
+              start: newDate.start,
+              end: newDate.end,
+              name: "",
+            };
+            _this.getBookings();
+          })
+          .catch((error) => {
+            console.log("Insert: " + error);
+          });
+      }
     },
     getBookings() {
       let _this = this;
