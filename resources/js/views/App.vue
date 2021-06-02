@@ -7,7 +7,6 @@
         v-model="range"
         is-range
         color="green"
-        @dayclick="dayClicked"
         show-weeknumbers
         :attributes="attributes"
         :available-dates="{ start: new Date(), end: null }"
@@ -32,12 +31,13 @@
           Datum
         </Input>
         <Input>Namn</Input>
+        <input type="text" v-model="newDate.name" />
       </form>
       <ButtonFlex>
         <Button :buttonFlex="'button-flex go-back'" :click="bookButton"
           >Ångra</Button
         >
-        <Button :buttonFlex="'button-flex'">Boka</Button>
+        <Button :buttonFlex="'button-flex'" :click="bookDate">Boka</Button>
       </ButtonFlex>
     </div>
   </div>
@@ -68,6 +68,9 @@ export default {
         dates: new Date(),
       },
     ],
+    dates: [],
+    hasError: true,
+    newDate: { start: "", end: "", name: "" },
     plaintext: "form-control-plaintext",
     range: {
       start: new Date(),
@@ -80,9 +83,46 @@ export default {
     bookButton() {
       this.transition = !this.transition;
     },
-    dayClicked() {
-      console.log(this.range.start);
-      console.log(this.range.end);
+    bookDate() {
+      let newDate = this.newDate;
+      let _this = this;
+      newDate.start = this.range.start;
+      newDate.end = this.range.end;
+      // if (
+      //   newDate["start"] === "" ||
+      //   newDate["end"] === "" ||
+      //   newDate["name"] === ""
+      // ) {
+      //   this.hasError = false;
+      //   console.log("Döden");
+      //   console.log(newDate.name);
+      // } else {
+      this.hasError = true;
+      axios
+        .post("/api/bookDate", newDate)
+        .then(function (response) {
+          _this.newDate = {
+            start: newDate.start,
+            end: newDate.end,
+            name: "",
+          };
+          _this.getBookings();
+        })
+        .catch((error) => {
+          console.log("Insert: " + error);
+        });
+      // }
+    },
+    getBookings() {
+      let _this = this;
+      axios
+        .get("/api/getBookings")
+        .then(function (response) {
+          _this.dates = response.data;
+        })
+        .catch((error) => {
+          console.log("Get All: " + error);
+        });
     },
   },
   computed: {
@@ -103,6 +143,9 @@ export default {
         end.getFullYear()
       );
     },
+  },
+  mounted() {
+    this.getBookings();
   },
 };
 </script>
