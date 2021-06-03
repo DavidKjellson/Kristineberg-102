@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <Check v-if="check" />
+    <!-- <Check v-if="check" /> -->
     <!-- <div v-for="(date, index) in dates" :key="index">
       <h4>{{ date.name }}</h4>
     </div> -->
