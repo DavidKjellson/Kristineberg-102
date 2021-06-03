@@ -1,8 +1,12 @@
 <template>
   <div>
     <Header />
+    <Check v-if="check" />
     <!-- <div v-for="(date, index) in dates" :key="index">
       <h4>{{ date.name }}</h4>
+    </div> -->
+    <!-- <div v-for="(attribute, index) in attributes" :key="index">
+      {{ attribute }}
     </div> -->
     <div v-if="!transition" class="calendar">
       <v-date-picker
@@ -60,12 +64,14 @@ const default_layout = "default";
 
 import Button from "../components/Button.vue";
 import ButtonFlex from "../components/ButtonFlex.vue";
+import Check from "../components/Check.vue";
 import Header from "../components/Header.vue";
 import Input from "../components/Input.vue";
 export default {
   components: {
     Button,
     ButtonFlex,
+    Check,
     Header,
     Input,
   },
@@ -84,13 +90,14 @@ export default {
       //     color: "red",
       //     fillMode: "light",
       //   },
-      //   dates: { start: new Date(2021, 5, 12), end: new Date(2021, 5, 14) },
+      //   dates: { start: new Date(), end: new Date() },
       //   popover: {
       //     label: "",
       //     visibility: "hover",
       //   },
       // },
     ],
+    check: false,
     dates: [],
     hasError: true,
     newDate: { start: new Date(), end: new Date(), name: "" },
@@ -108,6 +115,7 @@ export default {
     },
     bookDate() {
       let newDate = this.newDate;
+      let attributes = this.attributes;
       let _this = this;
       newDate.start = this.range.start;
       newDate.end = this.range.end;
@@ -120,14 +128,30 @@ export default {
       } else {
         this.hasError = true;
         axios
-          .post("/api/bookDate", newDate)
+          .post("/api/bookDate", newDate, attributes)
           .then(function (response) {
             _this.newDate = {
               start: newDate.start,
               end: newDate.end,
               name: "",
             };
+            _this.attributes.push({
+              highlight: {
+                color: "red",
+                fillMode: "light",
+              },
+              dates: {
+                start: new Date(newDate.start),
+                end: new Date(newDate.end),
+              },
+              popover: {
+                label: newDate.name,
+                visibility: "hover",
+              },
+            });
+            console.log(_this.attributes);
             _this.transition = !_this.transition;
+            _this.check = !_this.check;
             _this.getBookings();
           })
           .catch((error) => {
@@ -141,6 +165,7 @@ export default {
         .get("/api/getBookings")
         .then(function (response) {
           _this.dates = response.data;
+          // _this.attributes = response.data;
         })
         .catch((error) => {
           console.log("Get All: " + error);
