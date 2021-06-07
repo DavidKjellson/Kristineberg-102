@@ -1,13 +1,7 @@
 <template>
   <div>
     <Header />
-    <!-- <Check v-if="check" /> -->
-    <!-- <div v-for="(date, index) in dates" :key="index">
-      <h4>{{ date.name }}</h4>
-    </div> -->
-    <!-- <div v-for="(attribute, index) in attributes" :key="index">
-      {{ attribute }}
-    </div> -->
+
     <div v-if="!transition" class="calendar">
       <v-date-picker
         is-expanded
@@ -16,12 +10,7 @@
         color="green"
         show-weeknumbers
         :attributes="attributes"
-        :available-dates="[
-          {
-            start: new Date(),
-            end: null,
-          },
-        ]"
+        :disabled-dates="disabledDates"
       />
       <!--    :available-dates="[
           {
@@ -62,11 +51,8 @@
           >Boka</Button
         >
       </ButtonFlex>
-      <Modal
-        >Stugan är nu bokad mellan {{ bookedStart }} och {{ bookedEnd }} för
-        {{ newDate.name }}!</Modal
-      >
     </div>
+    <Modal>Stugan är nu bokad!</Modal>
   </div>
 </template>
 
@@ -112,6 +98,7 @@ export default {
     ],
     check: false,
     dates: [],
+    disabledDates: [],
     hasError: true,
     newDate: { start: new Date(), end: new Date(), name: "" },
     plaintext: "form-control-plaintext",
@@ -164,7 +151,7 @@ export default {
             });
 
             console.log(_this.attributes);
-            // _this.transition = !_this.transition;
+            _this.transition = !_this.transition;
             _this.check = !_this.check;
             _this.getBookings();
           })
@@ -179,6 +166,10 @@ export default {
         .get("/api/getBookings")
         .then(function (response) {
           _this.dates = response.data;
+          _this.dates.forEach((date) => {
+            _this.disabledDates.push({ start: date.start, end: date.end });
+          });
+          console.log(_this.disabledDates);
           // _this.attributes = response.data;
         })
         .catch((error) => {
@@ -207,6 +198,16 @@ export default {
         end.getFullYear()
       );
     },
+    // loopDates() {
+    //   let _this = this;
+    //   axios.get("/api/getBookings").then(function (response) {
+    //     _this.dates = response.data;
+    //     // _this.attributes = response.data;
+    //   });
+    //   _this.dates.forEach((date) => {
+    //     dates.start === date.start;
+    //   });
+    // },
     // bookedDates() {
     //   // let start = this.range.start;
     //   let end = this.range.end;
