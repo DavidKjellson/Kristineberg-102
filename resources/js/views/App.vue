@@ -23,6 +23,12 @@
           },
         ]"
       />
+      <!--    :available-dates="[
+          {
+            start: new Date(),
+            end: null,
+          },
+        ]" -->
       <div class="text-center mt-4 buttondiv">
         <Button
           :disabled="range.end === null"
@@ -36,7 +42,7 @@
     <div v-else>
       <form>
         <Input
-          :value="bookedDates"
+          :value="bookedStart + ' ➜ ' + bookedEnd"
           :readonly="readonly"
           :formControl="plaintext"
         >
@@ -52,9 +58,14 @@
           :buttonFlex="'button-flex'"
           :click="bookDate"
           :disabled="newDate.name === ''"
+          v-b-modal.modal-1
           >Boka</Button
         >
       </ButtonFlex>
+      <Modal
+        >Stugan är nu bokad mellan {{ bookedStart }} och {{ bookedEnd }} för
+        {{ newDate.name }}!</Modal
+      >
     </div>
   </div>
 </template>
@@ -64,16 +75,18 @@ const default_layout = "default";
 
 import Button from "../components/Button.vue";
 import ButtonFlex from "../components/ButtonFlex.vue";
-import Check from "../components/Check.vue";
+// import Check from "../components/Check.vue";
 import Header from "../components/Header.vue";
 import Input from "../components/Input.vue";
+import Modal from "../components/Modal.vue";
 export default {
   components: {
     Button,
     ButtonFlex,
-    Check,
+    // Check,
     Header,
     Input,
+    Modal,
   },
   data: () => ({
     attributes: [
@@ -135,7 +148,7 @@ export default {
               end: newDate.end,
               name: "",
             };
-            _this.attributes.push({
+            let push = _this.attributes.push({
               highlight: {
                 color: "red",
                 fillMode: "light",
@@ -149,8 +162,9 @@ export default {
                 visibility: "hover",
               },
             });
+
             console.log(_this.attributes);
-            _this.transition = !_this.transition;
+            // _this.transition = !_this.transition;
             _this.check = !_this.check;
             _this.getBookings();
           })
@@ -173,16 +187,19 @@ export default {
     },
   },
   computed: {
-    bookedDates() {
+    bookedStart() {
       let start = this.range.start;
-      let end = this.range.end;
       return (
         start.getDate() +
         " " +
         start.toLocaleString("sv-SV", { month: "long" }) +
         " " +
-        start.getFullYear() +
-        " ➜ " +
+        start.getFullYear()
+      );
+    },
+    bookedEnd() {
+      let end = this.range.end;
+      return (
         end.getDate() +
         " " +
         end.toLocaleString("sv-SV", { month: "long" }) +
@@ -190,6 +207,19 @@ export default {
         end.getFullYear()
       );
     },
+    // bookedDates() {
+    //   // let start = this.range.start;
+    //   let end = this.range.end;
+    //   return (
+    //     this.start() +
+    //     " ➜ " +
+    //     end.getDate() +
+    //     " " +
+    //     end.toLocaleString("sv-SV", { month: "long" }) +
+    //     " " +
+    //     end.getFullYear()
+    //   );
+    // },
   },
   mounted() {
     this.getBookings();

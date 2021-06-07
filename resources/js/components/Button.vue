@@ -51,6 +51,7 @@ export default {
   font-size: 20px;
   border: none;
   background-color: rgb(56, 161, 105) !important;
+  opacity: 1;
 
   &:hover {
     background-color: rgb(47, 133, 90);
@@ -60,13 +61,14 @@ export default {
     color: #fff !important;
     background-color: gray !important;
     pointer-events: none;
+    opacity: 1;
   }
 }
 .button-flex {
   width: 150px;
 }
 .go-back {
-  background-color: transparent !important;
+  background-color: #fff !important;
   color: black;
   border: 0.1px solid;
   &:hover {

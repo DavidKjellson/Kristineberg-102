@@ -10,7 +10,8 @@
 </head>
 
 <body>
-  <div id="app" class="bg">
+  <div id="app">
+    <!-- <img src="img/3540209647697935994.jpg" alt="" class="bg"> -->
     <app></app>
   </div>
   <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>
