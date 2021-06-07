@@ -1,6 +1,6 @@
 <template >
   <div>
-    <b-modal id="modal-1" title="Bekräftelse" hide-footer>
+    <b-modal id="modal-1" title="Bekräftelse" ok-only ok-variant="success">
       <Check />
       <p class="my-4"><slot /></p>
     </b-modal>
