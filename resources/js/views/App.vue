@@ -12,12 +12,6 @@
         :attributes="attributes"
         :disabled-dates="disabledDates"
       />
-      <!--    :available-dates="[
-          {
-            start: new Date(),
-            end: null,
-          },
-        ]" -->
       <div class="text-center mt-4 buttondiv">
         <Button
           :disabled="range.end === null"
@@ -61,7 +55,6 @@ const default_layout = "default";
 
 import Button from "../components/Button.vue";
 import ButtonFlex from "../components/ButtonFlex.vue";
-// import Check from "../components/Check.vue";
 import Header from "../components/Header.vue";
 import Input from "../components/Input.vue";
 import Modal from "../components/Modal.vue";
@@ -69,7 +62,6 @@ export default {
   components: {
     Button,
     ButtonFlex,
-    // Check,
     Header,
     Input,
     Modal,
@@ -83,22 +75,12 @@ export default {
           fillMode: "light",
         },
         dates: new Date(),
+        popover: true,
       },
-      // {
-      //   highlight: {
-      //     color: "red",
-      //     fillMode: "light",
-      //   },
-      //   dates: { start: new Date(), end: new Date() },
-      //   popover: {
-      //     label: "",
-      //     visibility: "hover",
-      //   },
-      // },
     ],
     check: false,
-    dates: [],
     disabledDates: [],
+    dates: [],
     hasError: true,
     newDate: { start: new Date(), end: new Date(), name: "" },
     plaintext: "form-control-plaintext",
@@ -115,7 +97,6 @@ export default {
     },
     bookDate() {
       let newDate = this.newDate;
-      let attributes = this.attributes;
       let _this = this;
       newDate.start = this.range.start;
       newDate.end = this.range.end;
@@ -128,29 +109,13 @@ export default {
       } else {
         this.hasError = true;
         axios
-          .post("/api/bookDate", newDate, attributes)
+          .post("/api/bookDate", newDate)
           .then(function (response) {
             _this.newDate = {
               start: newDate.start,
               end: newDate.end,
               name: "",
             };
-            let push = _this.attributes.push({
-              highlight: {
-                color: "red",
-                fillMode: "light",
-              },
-              dates: {
-                start: new Date(newDate.start),
-                end: new Date(newDate.end),
-              },
-              popover: {
-                label: newDate.name,
-                visibility: "hover",
-              },
-            });
-
-            console.log(_this.attributes);
             _this.transition = !_this.transition;
             _this.check = !_this.check;
             _this.getBookings();
@@ -167,10 +132,12 @@ export default {
         .then(function (response) {
           _this.dates = response.data;
           _this.dates.forEach((date) => {
-            _this.disabledDates.push({ start: date.start, end: date.end });
+            _this.disabledDates.push({
+              start: date.start,
+              end: date.end,
+            });
           });
           console.log(_this.disabledDates);
-          // _this.attributes = response.data;
         })
         .catch((error) => {
           console.log("Get All: " + error);
@@ -198,16 +165,6 @@ export default {
         end.getFullYear()
       );
     },
-    // loopDates() {
-    //   let _this = this;
-    //   axios.get("/api/getBookings").then(function (response) {
-    //     _this.dates = response.data;
-    //     // _this.attributes = response.data;
-    //   });
-    //   _this.dates.forEach((date) => {
-    //     dates.start === date.start;
-    //   });
-    // },
     // bookedDates() {
     //   // let start = this.range.start;
     //   let end = this.range.end;
@@ -243,5 +200,14 @@ form {
 .buttondiv {
   margin: 0 auto;
   width: 60%;
+}
+.vc-day-content.is-disabled[data-v-005dafc8] {
+  color: #fff !important;
+  background-color: rgb(206, 72, 72);
+  &:hover {
+    color: #fff;
+    background-color: rgb(206, 72, 72);
+  }
+  pointer-events: none;
 }
 </style>
