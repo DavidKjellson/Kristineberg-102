@@ -11,7 +11,7 @@
 
 <body>
   <div id="app">
-    <!-- <img src="img/3540209647697935994.jpg" alt="" class="bg"> -->
+    <!-- <img src="img/3540209647697935994.jpg" alt="" class="bg-img"> -->
     <app></app>
   </div>
   <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>

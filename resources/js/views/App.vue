@@ -75,7 +75,6 @@ export default {
           fillMode: "light",
         },
         dates: new Date(),
-        popover: true,
       },
     ],
     check: false,
